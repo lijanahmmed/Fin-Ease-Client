@@ -8,7 +8,7 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "text-purple-600 font-bold border-b-2" : ""
+            isActive ? "text-purple-900 font-bold border-b-2" : "text-purple-500"
           }
         >
           Home
@@ -18,7 +18,7 @@ const Navbar = () => {
         <NavLink
           to="/add-transaction"
           className={({ isActive }) =>
-            isActive ? "text-purple-600 font-bold border-b-2" : ""
+            isActive ? "text-purple-900 font-bold border-b-2" : "text-purple-500"
           }
         >
           Add Transaction
@@ -29,7 +29,7 @@ const Navbar = () => {
         <NavLink
           to="/my-transactions"
           className={({ isActive }) =>
-            isActive ? "text-purple-600 font-bold border-b-2" : ""
+            isActive ? "text-purple-900 font-bold border-b-2" : "text-purple-500"
           }
         >
           My Transactions
@@ -39,7 +39,7 @@ const Navbar = () => {
         <NavLink
           to="/reports"
           className={({ isActive }) =>
-            isActive ? "text-purple-600 font-bold border-b-2" : ""
+            isActive ? "text-purple-900 font-bold border-b-2" : "text-purple-500"
           }
         >
           Reports
@@ -49,7 +49,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar md:w-11/12 mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -76,9 +76,12 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost text-xl">
+        <div className="flex items-center">
+            <img className="w-12 rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT815NGXKz9w59G2GFzQbv18u8oXc0NxkLuLw&s" alt="" />
+            <Link to="/" className="btn btn-ghost text-purple-900 text-xl">
           Fin Ease
         </Link>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -86,7 +89,7 @@ const Navbar = () => {
       <div className="navbar-end">
         <div className="flex gap-2">
           <Link
-            className="btn bg-gradient-to-r from-purple-800 to-purple-500j text-white"
+            className="btn bg-gradient-to-r from-purple-800 to-purple-500 text-white"
             to="/auth/login"
           >
             Login

@@ -4,8 +4,8 @@ import Navbar from '../Components/Navbar';
 
 const Root = () => {
     return (
-        <div>
-            <div>
+        <div className='flex flex-col min-h-screen'>
+            <div className='bg-purple-100'>
                 <Navbar></Navbar>
             </div>
             <Outlet></Outlet>
