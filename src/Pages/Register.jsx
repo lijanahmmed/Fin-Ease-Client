@@ -75,7 +75,8 @@ const Register = () => {
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Register Here!</h1>
           <p className="py-6">
-            Create your account today to manage your finances smarter, track spending effortlessly, and achieve your financial goals faster.
+            Create your account today to manage your finances smarter, track
+            spending effortlessly, and achieve your financial goals faster.
           </p>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -131,7 +132,7 @@ const Register = () => {
                 <button
                   type="button"
                   onClick={handleGoogleLogIn}
-                  className="btn bg-white text-black border-[#e5e5e5] my-2"
+                  className="btn bg-white border-[#e5e5e5] my-2"
                 >
                   <svg
                     aria-label="Google logo"
@@ -164,7 +165,7 @@ const Register = () => {
                 </button>
                 <p className="text-sm">
                   Already have an account? Please{" "}
-                  <Link to="/login" className="text-blue-400 underline">
+                  <Link to="/auth/login" className="text-blue-400 underline">
                     Login now
                   </Link>
                 </p>
