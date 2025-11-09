@@ -2,7 +2,7 @@ import React from "react";
 
 const BudgetTips = () => {
   return (
-    <div className="mt-15 w-11/12 md:w-10/12 mx-auto">
+    <div className="mt-20 w-11/12 md:w-10/12 mx-auto">
       <div className="text-center space-y-2">
         <h3 className="text-3xl font-bold">Budgeting Tips</h3>
         <p className="">
