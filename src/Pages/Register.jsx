@@ -7,6 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 const Register = () => {
   const {
     createUserWithEmailAndPasswordFunc,
+    logInWithGoogleFunc,
     updateProfileFunc,
     setUser,
   } = use(AuthContext);
@@ -57,14 +58,24 @@ const Register = () => {
     e.target.reset();
   };
 
+  const handleGoogleLogIn = () => {
+    logInWithGoogleFunc()
+      .then((result) => {
+        setUser(result.user);
+        navigate("/");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
   return (
     <div className="hero mt-20">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Register Here!</h1>
           <p className="py-6">
-            Create your account today to manage your finances smarter, track
-            spending effortlessly, and achieve your financial goals faster.
+            Create your account today to manage your finances smarter, track spending effortlessly, and achieve your financial goals faster.
           </p>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -119,6 +130,7 @@ const Register = () => {
                 </button>
                 <button
                   type="button"
+                  onClick={handleGoogleLogIn}
                   className="btn bg-white text-black border-[#e5e5e5] my-2"
                 >
                   <svg
