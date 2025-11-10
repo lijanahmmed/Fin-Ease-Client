@@ -22,7 +22,10 @@ const Errorpage = () => {
         <p className="text-gray-400">
           The page you are looking for is not available.
         </p>
-        <button onClick={handleGoBack} className="btn text-white bg-green-600">
+        <button
+          onClick={handleGoBack}
+          className="btn text-white bg-gradient-to-r from-purple-800 to-purple-500"
+        >
           Go Back!
         </button>
       </div>
