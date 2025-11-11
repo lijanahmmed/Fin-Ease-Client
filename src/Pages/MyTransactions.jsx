@@ -19,10 +19,14 @@ const MyTransactions = () => {
         setTransactions(data);
         setLoading(false);
       });
-  }, []);
+  }, [user]);
 
   if (loading) {
     return <Loading></Loading>;
+  }
+
+  const handleDeleteSuccess = (id) => {
+    setTransactions((prev) => prev.filter(data => data._id !== id))
   }
 
   return (
@@ -39,6 +43,7 @@ const MyTransactions = () => {
           <TransactionCard
             key={transaction._id}
             transaction={transaction}
+            handleDeleteSuccess={handleDeleteSuccess}
           ></TransactionCard>
         ))}
       </div>
