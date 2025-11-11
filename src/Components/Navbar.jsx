@@ -130,6 +130,14 @@ const Navbar = () => {
               tabIndex={0}
               className="dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 shadow-sm space-y-3"
             >
+              <li>
+                <Link
+                  to="/my-profile"
+                  className="text-purple-800 font-extrabold border-b-2 hover:underline"
+                >
+                  My Profile
+                </Link>
+              </li>
               <li className="font-bold">{user.displayName}</li>
               <li>{user.email}</li>
               <li>
