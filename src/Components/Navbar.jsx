@@ -106,7 +106,7 @@ const Navbar = () => {
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT815NGXKz9w59G2GFzQbv18u8oXc0NxkLuLw&s"
             alt=""
           />
-          <Link to="/" className="btn btn-ghost text-purple-900 text-xl">
+          <Link to="/" className="btn btn-ghost text-purple-900 text-2xl">
             Fin Ease
           </Link>
         </div>
@@ -133,7 +133,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/my-profile"
-                  className="text-purple-800 font-extrabold border-b-2 hover:underline"
+                  className="text-purple-700 font-extrabold border-b-2 hover:underline"
                 >
                   My Profile
                 </Link>

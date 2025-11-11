@@ -79,11 +79,11 @@ const Register = () => {
             spending effortlessly, and achieve your financial goals faster.
           </p>
         </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className="card bg-base-100 w-full max-w-sm shrink-0 border border-purple-300 shadow-md shadow-purple-200">
           <div className="card-body">
             <form onSubmit={handleRegister}>
               <fieldset className="fieldset">
-                <label className="label text-black text-sm">Name</label>
+                <label className="label text-sm">Name</label>
                 <input
                   name="name"
                   type="text"
@@ -91,7 +91,7 @@ const Register = () => {
                   placeholder="Your Name"
                   required
                 />
-                <label className="label text-black text-sm">Email</label>
+                <label className="label text-sm">Email</label>
                 <input
                   name="email"
                   type="email"
@@ -99,7 +99,7 @@ const Register = () => {
                   placeholder="Email"
                   required
                 />
-                <label className="label text-black text-sm">Photo URL</label>
+                <label className="label text-sm">Photo URL</label>
                 <input
                   name="photo"
                   type="text"
@@ -108,7 +108,7 @@ const Register = () => {
                   required
                 />
                 <div className="relative">
-                  <label className="label text-black text-sm">Password</label>
+                  <label className="label text-sm">Password</label>
                   <input
                     name="password"
                     type={show ? "text" : "password"}
@@ -132,7 +132,7 @@ const Register = () => {
                 <button
                   type="button"
                   onClick={handleGoogleLogIn}
-                  className="btn bg-white border-[#e5e5e5] my-2"
+                  className="btn bg-white text-black border-[#e5e5e5] my-2"
                 >
                   <svg
                     aria-label="Google logo"

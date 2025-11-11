@@ -60,11 +60,11 @@ const Login = () => {
             Log in to simplify your finances and grow your wealth effortlessly.
           </p>
         </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className="card w-full max-w-sm shrink-0 border border-purple-300 shadow-md shadow-purple-200">
           <div className="card-body">
             <form onSubmit={handleLogIn}>
               <fieldset className="fieldset">
-                <label className="label text-black text-sm">Email</label>
+                <label className="label text-sm">Email</label>
                 <input
                   name="email"
                   type="email"
@@ -73,7 +73,7 @@ const Login = () => {
                   required
                 />
                 <div className="relative">
-                  <label className="label text-black text-sm">Password</label>
+                  <label className="label text-sm">Password</label>
                   <input
                     name="password"
                     type={show ? "text" : "password"}
@@ -105,7 +105,7 @@ const Login = () => {
                 <button
                   type="button"
                   onClick={handleGoogleLogIn}
-                  className="btn bg-white border-[#e5e5e5] my-2"
+                  className="btn bg-white text-black border-[#e5e5e5] my-2"
                 >
                   <svg
                     aria-label="Google logo"

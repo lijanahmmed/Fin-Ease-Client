@@ -87,7 +87,7 @@ const UpdateTransaction = () => {
   };
 
   return (
-    <div className="card border border-gray-200 bg-base-100 w-11/12 max-w-md mx-auto shadow-2xl rounded-2xl mt-20">
+    <div className="card w-11/12 max-w-md mx-auto border border-purple-300 shadow-md shadow-purple-200 rounded-2xl mt-20">
       <div className="card-body p-6 relative">
         <h2 className="text-2xl font-bold text-center mb-6">
           Update Transaction

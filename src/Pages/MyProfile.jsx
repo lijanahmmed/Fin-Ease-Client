@@ -48,7 +48,7 @@ const MyProfile = () => {
   };
 
   return (
-    <div className="mt-15 mx-auto p-10 border border-purple-300 shadow-xl shadow-purple-200 w-fit">
+    <div className="mt-15 mx-auto p-10 border border-purple-300 shadow-md shadow-purple-200 w-fit">
       <h2 className="text-center text-xl font-bold mb-8">My Profile</h2>
       <div className="flex items-center gap-10">
         <div>

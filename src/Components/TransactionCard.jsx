@@ -41,7 +41,7 @@ const TransactionCard = ({ transaction, handleDeleteSuccess }) => {
   };
 
   return (
-    <div className="border border-purple-300 shadow-purple-300 p-3 rounded-lg space-y-2">
+    <div className="border border-purple-300 shadow-md shadow-purple-200 p-3 rounded-lg space-y-2">
       <div className="flex justify-between items-center">
         <p className="text-xl font-bold">{type}</p>
         <p className="border border-purple-200 px-3 py-1 rounded-2xl">

@@ -39,7 +39,7 @@ const MyTransactions = () => {
           you clear insights into your financial activity.
         </p>
       </div>
-      {transactions > 0 ? (
+      {transactions.length > 0 ? (
         <div className="mt-15 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {transactions.map((transaction) => (
             <TransactionCard
@@ -52,9 +52,14 @@ const MyTransactions = () => {
       ) : (
         <div className="flex justify-center">
           <div className="mt-20 border border-purple-300 shadow-2xl shadow-purple-200 px-30 py-15 w-fit ">
-          <p className="text-2xl font-bold mb-5">No Transaction Yet</p>
-          <Link to="/add-transaction" className="btn flex justify-center bg-gradient-to-r from-purple-800 to-purple-500 text-white">Add Your Transaction</Link>
-        </div>
+            <p className="text-2xl font-bold mb-5">No Transaction Yet</p>
+            <Link
+              to="/add-transaction"
+              className="btn flex justify-center bg-gradient-to-r from-purple-800 to-purple-500 text-white"
+            >
+              Add Your Transaction
+            </Link>
+          </div>
         </div>
       )}
     </div>
