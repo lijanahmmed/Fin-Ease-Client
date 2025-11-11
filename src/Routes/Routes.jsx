@@ -11,6 +11,7 @@ import MyProfile from "../Pages/MyProfile";
 import Errorpage from "../Pages/Errorpage";
 import UpdateTransaction from "../Pages/UpdateTransaction";
 import Loading from "../Components/Loading";
+import TransactionDetails from "../Pages/TransactionDetails";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyTransactions></MyTransactions>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/transactions-details/:id",
+        element: (
+          <PrivateRoute>
+            <TransactionDetails></TransactionDetails>
           </PrivateRoute>
         ),
       },

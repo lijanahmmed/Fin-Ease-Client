@@ -1,7 +1,8 @@
 import React, { use, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 import Loading from "../Components/Loading";
+import Swal from "sweetalert2";
 
 const UpdateTransaction = () => {
   const { id } = useParams();
@@ -9,6 +10,7 @@ const UpdateTransaction = () => {
   const [transaction, setTransaction] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showCategory, setShowCategory] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`http://localhost:3000/transaction/${id}`, {
@@ -47,13 +49,56 @@ const UpdateTransaction = () => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const type = e.target.type.value;
+    const category = e.target.category.value;
+    const amount = e.target.amount.value;
+    const description = e.target.description.value;
+    const date = e.target.date.value;
+
+    const transactionData = {
+      type,
+      category,
+      amount,
+      description,
+      date,
+    };
+
+    fetch(`http://localhost:3000/transaction/${transaction._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(transactionData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(`/transactions-details/${transaction._id}`)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    e.target.reset();
+  };
+
   return (
     <div className="card border border-gray-200 bg-base-100 w-11/12 max-w-md mx-auto shadow-2xl rounded-2xl mt-20">
       <div className="card-body p-6 relative">
         <h2 className="text-2xl font-bold text-center mb-6">
           Update Transaction
         </h2>
-        <form className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="label font-medium">Type</label>
             <select
