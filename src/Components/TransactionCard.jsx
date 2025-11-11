@@ -3,6 +3,7 @@ import { Link } from "react-router";
 
 const TransactionCard = ({ transaction }) => {
   const { _id, type, category, amount, date } = transaction;
+  
   return (
     <div className="border border-purple-300 shadow-purple-300 p-3 rounded-lg space-y-2">
       <div className="flex justify-between items-center">
@@ -13,7 +14,7 @@ const TransactionCard = ({ transaction }) => {
       </div>
       <div className="flex justify-between items-center">
         <p>
-          <span className="font-bold">Amount :</span> {amount}৳
+          <span className="font-bold">Amount :</span> {amount} ৳
         </p>
         <p className="text-sm text-gray-400 mr-2">{date}</p>
       </div>
@@ -29,9 +30,9 @@ const TransactionCard = ({ transaction }) => {
         </button>
       </div>
       <div>
-        <button className="btn w-full rounded-xl bg-gradient-to-r from-purple-800 to-purple-500 text-white">
+        <Link to={`/transactions-details/${_id}`} className="btn w-full rounded-xl bg-gradient-to-r from-purple-800 to-purple-500 text-white">
           View Details
-        </button>
+        </Link>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { use, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 import Loading from "../Components/Loading";
-import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const UpdateTransaction = () => {
   const { id } = useParams();
@@ -76,13 +76,7 @@ const UpdateTransaction = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Your work has been saved",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        toast.success("Update your transaction Successfully!");
         navigate(`/transactions-details/${transaction._id}`)
       })
       .catch((err) => {

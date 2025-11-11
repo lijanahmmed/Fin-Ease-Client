@@ -1,6 +1,6 @@
 import React, { use, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const AddTransaction = () => {
   const { user } = use(AuthContext);
@@ -48,7 +48,13 @@ const AddTransaction = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success("Transaction added Successfully!");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Transaction has added successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         console.log(data);
       })
       .catch((err) => {

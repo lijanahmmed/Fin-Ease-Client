@@ -11,7 +11,7 @@ const Navbar = () => {
     logOutFunc()
       .then(() => {
         toast.info("Your account has been logged out");
-        navigate('/');
+        navigate("/");
       })
       .catch((error) => {
         toast.error(error.message);
@@ -136,7 +136,7 @@ const Navbar = () => {
                 <button
                   type="button"
                   onClick={handleLogOut}
-                  className="btn bg-green-600 text-white"
+                  className="btn bg-gradient-to-r from-purple-800 to-purple-500 text-white"
                 >
                   Log Out
                 </button>
