@@ -66,7 +66,6 @@ const AddTransaction = () => {
           <div>
             <label className="label font-medium">Type</label>
             <select
-              defaultValue={""}
               onChange={handleTypeChange}
               name="type"
               required
@@ -85,7 +84,6 @@ const AddTransaction = () => {
               <label className="label font-medium">Category</label>
               {showCategory ? (
                 <select
-                  defaultValue={""}
                   name="category"
                   required
                   className="select w-full rounded-full focus:border-0 focus:outline-gray-200"
@@ -100,7 +98,6 @@ const AddTransaction = () => {
                 </select>
               ) : (
                 <select
-                  defaultValue={""}
                   name="category"
                   required
                   className="select w-full rounded-full focus:border-0"

@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import Loading from "../Components/Loading";
 import TransactionCard from "../Components/TransactionCard";
+import { AuthContext } from "../Context/AuthContext";
 
 const MyTransactions = () => {
+  const { user } = use(AuthContext);
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/transaction")
+    fetch(`http://localhost:3000/transaction?email=${user.email}`, {
+      headers: {
+        authorization: `Bearer ${user.accessToken}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         setTransactions(data);
@@ -28,7 +34,7 @@ const MyTransactions = () => {
           you clear insights into your financial activity.
         </p>
       </div>
-      <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="mt-15 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {transactions.map((transaction) => (
           <TransactionCard
             key={transaction._id}

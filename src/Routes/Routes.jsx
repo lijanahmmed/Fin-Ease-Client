@@ -9,11 +9,14 @@ import Register from "../Pages/Register";
 import PrivateRoute from "../Private/PrivateRoute";
 import MyProfile from "../Pages/MyProfile";
 import Errorpage from "../Pages/Errorpage";
+import UpdateTransaction from "../Pages/UpdateTransaction";
+import Loading from "../Components/Loading";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    hydrateFallbackElement: <Loading></Loading>,
     children: [
       {
         path: "/",
@@ -53,7 +56,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/my-profile",
-        Component: MyProfile,
+        element: (
+          <PrivateRoute>
+            <MyProfile></MyProfile>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/update-transaction/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateTransaction></UpdateTransaction>
+          </PrivateRoute>
+        ),
       },
       {
         path: "*",

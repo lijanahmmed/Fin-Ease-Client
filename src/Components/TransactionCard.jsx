@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const TransactionCard = ({ transaction }) => {
   const { _id, type, category, amount, date } = transaction;
@@ -17,8 +18,15 @@ const TransactionCard = ({ transaction }) => {
         <p className="text-sm text-gray-400 mr-2">{date}</p>
       </div>
       <div className="flex justify-between gap-3 w-full mt-5">
-        <button className="btn flex-1 w-full rounded-2xl bg-gradient-to-r from-blue-500 to-blue-300 text-white">Update</button>
-        <button className="btn flex-1 w-full rounded-2xl bg-gray-200 text-black">Delete</button>
+        <Link
+          to={`/update-transaction/${_id}`}
+          className="btn flex-1 w-full rounded-2xl bg-gradient-to-r from-blue-500 to-blue-300 text-white"
+        >
+          Update
+        </Link>
+        <button className="btn flex-1 w-full rounded-2xl bg-gray-200 text-black">
+          Delete
+        </button>
       </div>
       <div>
         <button className="btn w-full rounded-xl bg-gradient-to-r from-purple-800 to-purple-500 text-white">

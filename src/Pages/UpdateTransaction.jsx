@@ -1,9 +1,162 @@
-import React from "react";
+import React, { use, useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { AuthContext } from "../Context/AuthContext";
+import Loading from "../Components/Loading";
 
 const UpdateTransaction = () => {
+  const { id } = useParams();
+  const { user } = use(AuthContext);
+  const [transaction, setTransaction] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [showCategory, setShowCategory] = useState(null);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/transaction/${id}`, {
+      headers: {
+        authorization: `Bearer ${user.accessToken}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setTransaction(data.result);
+        setLoading(false);
+
+        if (data.result.type === "Income") {
+          setShowCategory(true);
+        } else if (data.result.type === "Expense") {
+          setShowCategory(false);
+        } else {
+          setShowCategory(null);
+        }
+      });
+  }, [user, id]);
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
+
+  const handleTypeChange = (e) => {
+    const type = e.target.value;
+
+    if (type === "Income") {
+      setShowCategory(true);
+    } else if (type === "Expense") {
+      setShowCategory(false);
+    } else {
+      setShowCategory(null);
+    }
+  };
+
   return (
-    <div>
-        
+    <div className="card border border-gray-200 bg-base-100 w-11/12 max-w-md mx-auto shadow-2xl rounded-2xl mt-20">
+      <div className="card-body p-6 relative">
+        <h2 className="text-2xl font-bold text-center mb-6">
+          Update Transaction
+        </h2>
+        <form className="space-y-4">
+          <div>
+            <label className="label font-medium">Type</label>
+            <select
+              defaultValue={transaction.type}
+              onChange={handleTypeChange}
+              name="type"
+              required
+              className="select w-full rounded-full focus:border-0 "
+            >
+              <option value="" disabled>
+                Select Type
+              </option>
+              <option value="Income">Income</option>
+              <option value="Expense">Expense</option>
+            </select>
+          </div>
+
+          {showCategory !== null && (
+            <div>
+              <label className="label font-medium">Category</label>
+              {showCategory ? (
+                <select
+                  defaultValue={transaction.category}
+                  name="category"
+                  required
+                  className="select w-full rounded-full focus:border-0 focus:outline-gray-200"
+                >
+                  <option value="" disabled>
+                    Select category
+                  </option>
+                  <option value="Salary">Salary</option>
+                  <option value="Pocket money">Pocket money</option>
+                  <option value="Business">Business</option>
+                  <option value="Others">Others</option>
+                </select>
+              ) : (
+                <select
+                  defaultValue={transaction.category}
+                  name="category"
+                  required
+                  className="select w-full rounded-full focus:border-0"
+                >
+                  <option value="" disabled>
+                    Select category
+                  </option>
+                  <option value="Home">Home</option>
+                  <option value="Food">Food</option>
+                  <option value="Health">Health</option>
+                  <option value="Personal">Personal</option>
+                  <option value="Education">Education</option>
+                  <option value="Technology">Technology</option>
+                  <option value="Entertainment">Entertainment</option>
+                  <option value="Family">Family</option>
+                  <option value="Other">Other</option>
+                </select>
+              )}
+            </div>
+          )}
+
+          <div>
+            <label className="label font-medium">Amount</label>
+            <input
+              defaultValue={transaction.amount}
+              type="number"
+              name="amount"
+              required
+              className="input w-full rounded-full focus:border-0"
+              placeholder="Amount"
+            />
+          </div>
+
+          <div>
+            <label className="label font-medium">Description</label>
+            <textarea
+              defaultValue={transaction.description}
+              name="description"
+              required
+              rows="3"
+              className="textarea w-full rounded-2xl focus:border-0 h-[250px]"
+              placeholder="Enter description"
+            ></textarea>
+          </div>
+
+          <div>
+            <label className="label font-medium">Date</label>
+            <input
+              defaultValue={transaction.date}
+              type="date"
+              name="date"
+              required
+              className="input w-full rounded-full focus:border-0"
+              placeholder="Date"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="btn w-full text-white mt-6 rounded-full bg-gradient-to-r from-purple-800 to-purple-500"
+          >
+            Update Transaction
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
