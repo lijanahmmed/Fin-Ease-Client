@@ -72,12 +72,13 @@ const AddTransaction = () => {
           <div>
             <label className="label font-medium">Type</label>
             <select
+            defaultValue="Select"
               onChange={handleTypeChange}
               name="type"
               required
               className="select w-full rounded-full focus:border-0 "
             >
-              <option value="" disabled>
+              <option value="Select" disabled>
                 Select Type
               </option>
               <option value="Income">Income</option>

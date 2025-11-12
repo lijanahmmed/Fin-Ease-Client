@@ -8,9 +8,11 @@ const MyTransactions = () => {
   const { user } = use(AuthContext);
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sortBy, setSortBy] = useState("date")
+  const [order, setOrder] = useState("desc")
 
   useEffect(() => {
-    fetch(`http://localhost:3000/transaction?email=${user.email}`, {
+    fetch(`http://localhost:3000/transaction?email=${user.email}&sortBy=${sortBy}&order=${order}`, {
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },
@@ -20,7 +22,7 @@ const MyTransactions = () => {
         setTransactions(data);
         setLoading(false);
       });
-  }, [user]);
+  }, [user, sortBy, order]);
 
   if (loading) {
     return <Loading></Loading>;
@@ -38,6 +40,36 @@ const MyTransactions = () => {
           Easily track, manage, and review all your income and expenses, giving
           you clear insights into your financial activity.
         </p>
+        <div className="mt-15 flex justify-between items-center">
+          <div className="flex items-center gap-4">
+            <p className="text-lg font-bold">Filter</p>
+            <select
+            onChange={(e) => {
+              setSortBy("amount");
+              setOrder(e.target.value)
+            }}
+              defaultValue="Filter Amount"
+              className="select select-info w-56"
+            >
+              <option disabled={true}>Filter Amount</option>
+              <option value="desc">High to Low</option>
+              <option value="asc">Low to High</option>
+            </select>
+          </div>
+          <div className="flex items-center gap-4">
+            <p className="text-lg font-bold">Sort by Date</p>
+            <select
+             onChange={(e) => {
+              setSortBy("date");
+              setOrder(e.target.value)
+            }}
+             defaultValue="Default" className="select select-info w-56 rounded-md">
+              <option disabled={true}>Default</option>
+              <option value="desc">Latest</option>
+              <option value="asc">Earliest</option>
+            </select>
+          </div>
+        </div>
       </div>
       {transactions.length > 0 ? (
         <div className="mt-15 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
