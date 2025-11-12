@@ -12,7 +12,7 @@ const MyTransactions = () => {
   const [order, setOrder] = useState("desc")
 
   useEffect(() => {
-    fetch(`http://localhost:3000/transaction?email=${user.email}&sortBy=${sortBy}&order=${order}`, {
+    fetch(`http://localhost:3000/my-transaction?email=${user.email}&sortBy=${sortBy}&order=${order}`, {
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },
@@ -64,7 +64,6 @@ const MyTransactions = () => {
               setOrder(e.target.value)
             }}
              defaultValue="Default" className="select select-info w-56 rounded-md">
-              <option disabled={true}>Default</option>
               <option value="desc">Latest</option>
               <option value="asc">Earliest</option>
             </select>

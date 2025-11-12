@@ -23,7 +23,7 @@ const Reports = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/transaction/?email=${user.email}`, {
+    fetch(`http://localhost:3000/my-transaction/?email=${user.email}`, {
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },
@@ -79,8 +79,8 @@ const Reports = () => {
 
   return (
     <div className="mt-20 w-11/12 md:w-10/12 mx-auto">
-      <h1 className="text-2xl font-extrabold border-b-2 border-purple-600 pb-1 w-32">
-        Reports
+      <h1 className="text-2xl font-extrabold border-b-2 border-purple-600 pb-1 w-72">
+        Financial Summary
       </h1>
 
       <div className="grid lg:grid-cols-2 gap-10 mt-10">
@@ -88,7 +88,7 @@ const Reports = () => {
           <h2 className="text-lg font-semibold mb-3 text-center text-green-600">
             Income by category
           </h2>
-          <PieChart width={300} height={300}>
+          <PieChart width={300} height={400} className="ml-15">
             <Pie
               data={incomeData}
               dataKey="value"
@@ -114,7 +114,7 @@ const Reports = () => {
           <h2 className="text-lg font-semibold mb-3 text-center text-red-600">
             Expenses by category
           </h2>
-          <PieChart width={300} height={300}>
+          <PieChart width={300} height={400} className="ml-15">
             <Pie
               data={expenseData}
               dataKey="value"
@@ -142,7 +142,7 @@ const Reports = () => {
           Monthly Total Amount
         </h2>
 
-        <BarChart width="100%" height={350} data={barData} className="mx-auto">
+        <BarChart width="100%" height={400} data={barData} className="mx-auto">
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="month" />
           <YAxis />
