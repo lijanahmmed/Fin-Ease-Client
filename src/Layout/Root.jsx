@@ -12,7 +12,7 @@ const Root = () => {
             <div className='flex-1'>
                 <Outlet></Outlet>
             </div>
-            <div className='bg-gray-400 mt-15'>
+            <div className='bg-gray-400 mt-20'>
                 <Footer></Footer>
             </div>
         </div>
