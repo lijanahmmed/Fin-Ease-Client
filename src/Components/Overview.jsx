@@ -47,7 +47,7 @@ const Overview = () => {
   return (
     <div className="mt-20 w-11/12 md:10/12 mx-auto">
       <h1 className="text-3xl font-bold text-center">
-        OverView Your Transaction
+        Overview Your Transaction
       </h1>
       <div className="mt-10 flex flex-col md:flex-row gap-10 w-full">
         <div className="text-white text-center bg-gradient-to-r from-purple-500 to-purple-400 py-20 rounded-2xl flex-1">

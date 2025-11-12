@@ -8,19 +8,41 @@ const TransactionDetails = () => {
   const { user } = use(AuthContext);
   const [transaction, setTransaction] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [categoryTotals, setCategoryTotals] = useState({})
 
   useEffect(() => {
-    fetch(`http://localhost:3000/transaction/${id}`, {
+    fetch(`http://localhost:3000/transaction/?email=${user.email}`, {
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        setTransaction(data.result);
+        calculateCategory(data);
+        const showDetails = data.find((t) => t._id === id);
+        setTransaction(showDetails);
         setLoading(false);
       });
   }, [user, id]);
+
+  const calculateCategory = (data) => {
+    const categoryTotals = {};
+
+    data.forEach((t) => {
+      const category = t.category;
+      const amount = Number(t.amount);
+
+      if (categoryTotals[category]) {
+        categoryTotals[category] += amount;
+      } else {
+        categoryTotals[category] = amount;
+      }
+    });
+
+    console.log(categoryTotals)
+    setCategoryTotals(categoryTotals)
+    return categoryTotals;
+  };
 
   if (loading) {
     return <Loading></Loading>;
@@ -32,7 +54,7 @@ const TransactionDetails = () => {
         Details
       </h1>
       <div className="mt-10 flex items-center gap-36">
-        <div>
+        <div className="max-w-1/2">
           <div className="flex items-center gap-5 mb-7">
             <h3 className="text-xl font-bold">{transaction.type}</h3>
             <p className="border bg-purple-500 text-white px-3 py-1 rounded-2xl">
@@ -54,11 +76,17 @@ const TransactionDetails = () => {
         </div>
         <div className="hidden md:block">
           <img
-            className="w-56"
+            className="w-full"
             src="https://cdn-icons-png.flaticon.com/256/9964/9964360.png"
             alt=""
           />
         </div>
+      </div>
+      <div className="mt-5">
+        <span className="font-bold">
+          Total Amount of {transaction.category} :  
+        </span>
+        <span className="text-purple-600"> {categoryTotals[transaction.category]} ৳</span>
       </div>
     </div>
   );
