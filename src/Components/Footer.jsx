@@ -26,9 +26,9 @@ const Footer = () => {
         <div>
           <h4 className="text-lg font-bold">Quick Links</h4>
           <ul className="space-y-2 mt-2">
-            <li className="text-gray-900 cursor-pointer">About</li>
-            <li className="text-gray-900 cursor-pointer">Contact</li>
-            <li className="text-gray-900 cursor-pointer">Privacy Policy</li>
+            <li className="text-gray-600 cursor-pointer">About</li>
+            <li className="text-gray-600 cursor-pointer">Contact</li>
+            <li className="text-gray-600 cursor-pointer">Privacy Policy</li>
           </ul>
         </div>
         <div>

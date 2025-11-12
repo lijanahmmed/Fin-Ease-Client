@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 import { toast } from "react-toastify";
@@ -6,6 +6,13 @@ import { toast } from "react-toastify";
 const Navbar = () => {
   const { user, loading, logOutFunc } = use(AuthContext);
   const navigate = useNavigate();
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const handleLogOut = () => {
     logOutFunc()
@@ -16,6 +23,10 @@ const Navbar = () => {
       .catch((error) => {
         toast.error(error.message);
       });
+  };
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark" : "light");
   };
 
   const links = (
@@ -79,7 +90,7 @@ const Navbar = () => {
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-5 w-5 text-black"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -115,6 +126,13 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
+        <input
+          onChange={(e) => handleTheme(e.target.checked)}
+          type="checkbox"
+          defaultChecked={localStorage.getItem("theme") === "dark"}
+          className="toggle mr-3"
+        />
+
         {loading ? (
           <span className="loading loading-spinner loading-xl"></span>
         ) : user ? (

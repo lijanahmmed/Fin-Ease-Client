@@ -36,7 +36,7 @@ const Overview = () => {
       0
     );
 
-    const totalBalance = income + expense;
+    const totalBalance = income - expense;
     setTransactions({ income, expense, totalBalance });
   };
 
@@ -60,14 +60,14 @@ const Overview = () => {
         <div className="text-white text-center bg-gradient-to-r from-green-600 to-green-400 py-20 rounded-2xl flex-1">
           <h2 className="text-2xl font-bold">Income</h2>
           <p className="text-lg font-bold mt-5">
-            Total income : {transactions.income}
+            Total Income : {transactions.income}
           </p>
         </div>
 
         <div className="text-white text-center bg-gradient-to-r from-blue-600 to-blue-400 py-20 rounded-2xl flex-1">
           <h2 className="text-2xl font-bold">Expenses</h2>
           <p className="text-lg font-bold mt-5">
-            Total expenses : {transactions.expense}
+            Total Expenses : {transactions.expense}
           </p>
         </div>
       </div>
