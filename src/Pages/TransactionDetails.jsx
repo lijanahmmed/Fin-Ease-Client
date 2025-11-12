@@ -8,7 +8,7 @@ const TransactionDetails = () => {
   const { user } = use(AuthContext);
   const [transaction, setTransaction] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [categoryTotals, setCategoryTotals] = useState({})
+  const [categoryTotals, setCategoryTotals] = useState({});
 
   useEffect(() => {
     fetch(`http://localhost:3000/transaction/?email=${user.email}`, {
@@ -38,10 +38,7 @@ const TransactionDetails = () => {
         categoryTotals[category] = amount;
       }
     });
-
-    console.log(categoryTotals)
-    setCategoryTotals(categoryTotals)
-    return categoryTotals;
+    setCategoryTotals(categoryTotals);
   };
 
   if (loading) {
@@ -84,9 +81,12 @@ const TransactionDetails = () => {
       </div>
       <div className="mt-5">
         <span className="font-bold">
-          Total Amount of {transaction.category} :  
+          Total Amount of {transaction.category} {transaction.type} :
         </span>
-        <span className="text-purple-600"> {categoryTotals[transaction.category]} ৳</span>
+        <span className="text-purple-600">
+          {" "}
+          {categoryTotals[transaction.category]} ৳
+        </span>
       </div>
     </div>
   );
