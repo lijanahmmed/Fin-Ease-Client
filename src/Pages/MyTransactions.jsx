@@ -12,7 +12,7 @@ const MyTransactions = () => {
   const [order, setOrder] = useState("desc")
 
   useEffect(() => {
-    fetch(`http://localhost:3000/my-transaction?email=${user.email}&sortBy=${sortBy}&order=${order}`, {
+    fetch(`http://localhost:3000/transaction?email=${user.email}&sortBy=${sortBy}&order=${order}`, {
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },
@@ -82,7 +82,7 @@ const MyTransactions = () => {
         </div>
       ) : (
         <div className="flex justify-center">
-          <div className="mt-20 border border-purple-300 shadow-2xl shadow-purple-200 px-30 py-15 w-fit ">
+          <div className="mt-20 border border-purple-300 shadow-md shadow-purple-200 px-30 py-15 w-fit ">
             <p className="text-2xl font-bold mb-5">No Transaction Yet</p>
             <Link
               to="/add-transaction"

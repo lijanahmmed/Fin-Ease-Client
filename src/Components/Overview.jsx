@@ -13,7 +13,7 @@ const Overview = () => {
 
   useEffect(() => {
 
-    fetch(`http://localhost:3000/my-transaction?email=${user.email}`, {
+    fetch(`http://localhost:3000/transaction?email=${user.email}`, {
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },

@@ -13,7 +13,7 @@ const UpdateTransaction = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/my-transaction/${id}`, {
+    fetch(`http://localhost:3000/transaction/${id}`, {
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },
@@ -66,7 +66,7 @@ const UpdateTransaction = () => {
       date,
     };
 
-    fetch(`http://localhost:3000/update-transaction/${transaction._id}`, {
+    fetch(`http://localhost:3000/transaction/${transaction._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

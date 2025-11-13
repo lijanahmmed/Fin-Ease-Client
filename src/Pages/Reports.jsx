@@ -13,6 +13,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { Link } from "react-router";
 
 const COLORS_INCOME = ["#10b981", "#34d399", "#6ee7b7", "#059669", "#047857"];
 const COLORS_EXPENSE = ["#ef4444", "#f87171", "#fb7185", "#b91c1c", "#7f1d1d"];
@@ -23,7 +24,7 @@ const Reports = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/my-transaction/?email=${user.email}`, {
+    fetch(`http://localhost:3000/transaction/?email=${user.email}`, {
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },
@@ -78,79 +79,100 @@ const Reports = () => {
   }));
 
   return (
-    <div className="mt-20 w-11/12 md:w-10/12 mx-auto">
+    <div className="mt-20 w-11/12 md:w-10/12 mx-auto overflow-hidden">
       <h1 className="text-2xl font-extrabold border-b-2 border-purple-600 pb-1 w-72">
         Financial Summary
       </h1>
 
-      <div className="grid lg:grid-cols-2 gap-10 mt-10">
-        <div className="bg-purple-100 rounded-2xl shadow-md shadow-purple-200 p-5">
-          <h2 className="text-lg font-semibold mb-3 text-center text-green-600">
-            Income by category
-          </h2>
-          <PieChart width={300} height={400} className="ml-15">
-            <Pie
-              data={incomeData}
-              dataKey="value"
-              nameKey="name"
-              cx="50%"
-              cy="50%"
-              outerRadius={100}
-              label
+      {transaction.length > 0 ? (
+        <div>
+          <div className="grid lg:grid-cols-2 gap-10 mt-10">
+            <div className="bg-purple-100 rounded-2xl shadow-md shadow-purple-200 p-5">
+              <h2 className="text-lg font-semibold mb-3 text-center text-green-600">
+                Income by category
+              </h2>
+              <PieChart width={350} height={400} className="ml-0 lg:ml-20">
+                <Pie
+                  data={incomeData}
+                  dataKey="value"
+                  nameKey="name"
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={100}
+                  label
+                >
+                  {incomeData.map((entry, index) => (
+                    <Cell
+                      key={`cell-income-${index}`}
+                      fill={COLORS_INCOME[index % COLORS_INCOME.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </div>
+
+            <div className="bg-purple-100 rounded-2xl shadow-md shadow-purple-200 p-5">
+              <h2 className="text-lg font-semibold mb-3 text-center text-red-600">
+                Expenses by category
+              </h2>
+              <PieChart width={350} height={400} className="ml-0 lg:ml-20">
+                <Pie
+                  data={expenseData}
+                  dataKey="value"
+                  nameKey="name"
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={100}
+                  label
+                >
+                  {expenseData.map((entry, index) => (
+                    <Cell
+                      key={`cell-expense-${index}`}
+                      fill={COLORS_EXPENSE[index % COLORS_EXPENSE.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </div>
+          </div>
+
+          <div className="bg-purple-100 rounded-2xl shadow-md shadow-purple-200 p-5 mt-10">
+            <h2 className="text-lg font-semibold mb-3 text-center text-purple-600">
+              Monthly Total Amount
+            </h2>
+
+            <BarChart
+              width="100%"
+              height={400}
+              data={barData}
+              className="mx-auto"
             >
-              {incomeData.map((entry, index) => (
-                <Cell
-                  key={`cell-income-${index}`}
-                  fill={COLORS_INCOME[index % COLORS_INCOME.length]}
-                />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend />
-          </PieChart>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="total" fill="#8b5cf6" name="Total Amount" />
+            </BarChart>
+          </div>
         </div>
-
-        <div className="bg-purple-100 rounded-2xl shadow-md shadow-purple-200 p-5">
-          <h2 className="text-lg font-semibold mb-3 text-center text-red-600">
-            Expenses by category
-          </h2>
-          <PieChart width={300} height={400} className="ml-15">
-            <Pie
-              data={expenseData}
-              dataKey="value"
-              nameKey="name"
-              cx="50%"
-              cy="50%"
-              outerRadius={100}
-              label
+      ) : (
+        <div className="flex justify-center">
+          <div className="mt-20 border border-purple-300 shadow-md shadow-purple-200 px-30 py-15 w-fit ">
+            <p className="text-2xl font-bold mb-5">No Transaction Yet</p>
+            <Link
+              to="/add-transaction"
+              className="btn flex justify-center bg-gradient-to-r from-purple-800 to-purple-500 text-white"
             >
-              {expenseData.map((entry, index) => (
-                <Cell
-                  key={`cell-expense-${index}`}
-                  fill={COLORS_EXPENSE[index % COLORS_EXPENSE.length]}
-                />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend />
-          </PieChart>
+              Add Your Transaction
+            </Link>
+          </div>
         </div>
-      </div>
-
-      <div className="bg-purple-100 rounded-2xl shadow-md shadow-purple-200 p-5 mt-10">
-        <h2 className="text-lg font-semibold mb-3 text-center text-purple-600">
-          Monthly Total Amount
-        </h2>
-
-        <BarChart width="100%" height={400} data={barData} className="mx-auto">
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="total" fill="#8b5cf6" name="Total Amount" />
-        </BarChart>
-      </div>
+      )}
     </div>
   );
 };
