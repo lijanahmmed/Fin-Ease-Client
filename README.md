@@ -25,7 +25,7 @@
 **Backend:**
 - Node.js  
 - Express.js  
-- MongoDB (Mongoose ODM)
+- MongoDB
 
 **Other Tools:**
 - Firebase Authentication   
