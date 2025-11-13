@@ -11,11 +11,14 @@ const TransactionDetails = () => {
   const [categoryTotals, setCategoryTotals] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:3000/transaction/?email=${user.email}`, {
-      headers: {
-        authorization: `Bearer ${user.accessToken}`,
-      },
-    })
+    fetch(
+      `https://fin-ease-server-nine.vercel.app/transaction/?email=${user.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         calculateCategory(data);

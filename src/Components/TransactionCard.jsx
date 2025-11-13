@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import Swal from "sweetalert2";
 
 const TransactionCard = ({ transaction, handleDeleteSuccess }) => {
-  const {_id, type, category, amount, date} = transaction;
+  const { _id, type, category, amount, date } = transaction;
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -16,7 +16,7 @@ const TransactionCard = ({ transaction, handleDeleteSuccess }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/transaction/${id}`, {
+        fetch(`https://fin-ease-server-nine.vercel.app/transaction/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -31,7 +31,7 @@ const TransactionCard = ({ transaction, handleDeleteSuccess }) => {
               icon: "success",
             });
 
-            handleDeleteSuccess(id)
+            handleDeleteSuccess(id);
           })
           .catch((err) => {
             console.log(err);

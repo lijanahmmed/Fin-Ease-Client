@@ -39,7 +39,7 @@ const AddTransaction = () => {
       name,
     };
 
-    fetch("http://localhost:3000/transaction", {
+    fetch("https://fin-ease-server-nine.vercel.app/transaction", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +72,7 @@ const AddTransaction = () => {
           <div>
             <label className="label font-medium">Type</label>
             <select
-            defaultValue="Select"
+              defaultValue="Select"
               onChange={handleTypeChange}
               name="type"
               required

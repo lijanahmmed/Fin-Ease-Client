@@ -8,15 +8,18 @@ const MyTransactions = () => {
   const { user } = use(AuthContext);
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [sortBy, setSortBy] = useState("date")
-  const [order, setOrder] = useState("desc")
+  const [sortBy, setSortBy] = useState("date");
+  const [order, setOrder] = useState("desc");
 
   useEffect(() => {
-    fetch(`http://localhost:3000/transaction?email=${user.email}&sortBy=${sortBy}&order=${order}`, {
-      headers: {
-        authorization: `Bearer ${user.accessToken}`,
-      },
-    })
+    fetch(
+      `https://fin-ease-server-nine.vercel.app/transaction?email=${user.email}&sortBy=${sortBy}&order=${order}`,
+      {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setTransactions(data);
@@ -44,10 +47,10 @@ const MyTransactions = () => {
           <div className="flex items-center gap-4">
             <p className="text-lg font-bold">Filter</p>
             <select
-            onChange={(e) => {
-              setSortBy("amount");
-              setOrder(e.target.value)
-            }}
+              onChange={(e) => {
+                setSortBy("amount");
+                setOrder(e.target.value);
+              }}
               defaultValue="Filter Amount"
               className="select select-info w-56"
             >
@@ -59,11 +62,13 @@ const MyTransactions = () => {
           <div className="flex items-center gap-4">
             <p className="text-lg font-bold">Sort by Date</p>
             <select
-             onChange={(e) => {
-              setSortBy("date");
-              setOrder(e.target.value)
-            }}
-             defaultValue="Default" className="select select-info w-56 rounded-md">
+              onChange={(e) => {
+                setSortBy("date");
+                setOrder(e.target.value);
+              }}
+              defaultValue="Default"
+              className="select select-info w-56 rounded-md"
+            >
               <option value="desc">Latest</option>
               <option value="asc">Earliest</option>
             </select>

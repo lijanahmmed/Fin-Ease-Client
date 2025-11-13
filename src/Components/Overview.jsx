@@ -12,18 +12,19 @@ const Overview = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-
-    fetch(`http://localhost:3000/transaction?email=${user.email}`, {
-      headers: {
-        authorization: `Bearer ${user.accessToken}`,
-      },
-    })
+    fetch(
+      `https://fin-ease-server-nine.vercel.app/transaction?email=${user.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         calculateOverview(data);
         setLoading(false);
-      })
-      
+      });
   }, [user]);
 
   const calculateOverview = (data) => {

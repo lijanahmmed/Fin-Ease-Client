@@ -13,7 +13,7 @@ const UpdateTransaction = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/transaction/${id}`, {
+    fetch(`https://fin-ease-server-nine.vercel.app/transaction/${id}`, {
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },
@@ -66,18 +66,21 @@ const UpdateTransaction = () => {
       date,
     };
 
-    fetch(`http://localhost:3000/transaction/${transaction._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(transactionData),
-    })
+    fetch(
+      `https://fin-ease-server-nine.vercel.app/transaction/${transaction._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(transactionData),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         toast.success("Update your transaction Successfully!");
-        navigate(`/transactions-details/${transaction._id}`)
+        navigate(`/transactions-details/${transaction._id}`);
       })
       .catch((err) => {
         console.log(err);
