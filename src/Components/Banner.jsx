@@ -15,7 +15,7 @@ const Banner = () => {
       </div>
       <div className="flex-1/2 md:ml-30 flex justify-center">
         <img
-          className="w-96"
+          className="w-96 rounded-2xl"
           src="https://img.freepik.com/premium-vector/thinking-about-money-decision-financial-planning-investment-strategy-profit-loss-expense_926199-3663908.jpg"
           alt=""
         />

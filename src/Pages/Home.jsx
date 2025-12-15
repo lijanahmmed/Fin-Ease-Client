@@ -4,6 +4,7 @@ import BudgetTips from "../Components/BudgetTips";
 import FinancialMatter from "../Components/FinancialMatter";
 import Overview from "../Components/Overview";
 import { AuthContext } from "../Context/AuthContext";
+import FinancialService from "../Components/FinancialService";
 
 const Home = () => {
   const { user } = use(AuthContext);
@@ -13,6 +14,7 @@ const Home = () => {
       {user ? <Overview></Overview> : ""}
       <BudgetTips></BudgetTips>
       <FinancialMatter></FinancialMatter>
+      <FinancialService></FinancialService>
     </div>
   );
 };
