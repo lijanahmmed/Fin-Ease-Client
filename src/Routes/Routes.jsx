@@ -12,6 +12,7 @@ import Errorpage from "../Pages/Errorpage";
 import UpdateTransaction from "../Pages/UpdateTransaction";
 import Loading from "../Components/Loading";
 import TransactionDetails from "../Pages/TransactionDetails";
+import About from "../Pages/About";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         Component: Home,
+      },
+      {
+        path: "/about",
+        Component: About,
       },
       {
         path: "/add-transaction",

@@ -4,9 +4,10 @@ const FinancialService = () => {
   return (
     <div className="mt-20 w-11/12 md:w-10/12 mx-auto">
       <div className="text-center space-y-2">
-        <h3 className="text-3xl font-bold">Secure Financial Control</h3>
+        <h3 className="text-3xl font-bold">Financial Service Control</h3>
         <p className="text-gray-500">
-          Your money, your control — secured with trusted financial protection.
+          Take full control of your finances by managing services, tracking
+          accounts, and optimizing spending - all from a single platform.
         </p>
       </div>
       <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-10">
@@ -33,7 +34,8 @@ const FinancialService = () => {
           <p className="text-gray-500">
             Financial Reporting in Fin Ease provides clear, real-time insights
             into your income, expenses and savings. Track your financial health
-            effortlessly, generate easy-to-understand reports to achieve your goals confidently.
+            effortlessly, generate easy-to-understand reports to achieve your
+            goals confidently.
           </p>
         </div>
       </div>
