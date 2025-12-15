@@ -4,6 +4,8 @@ import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router";
 
 const Footer = () => {
+  const year = new Date().getFullYear();
+
   return (
     <div className="w-11/12 md:w-10/12 mx-auto pt-10 pb-2">
       <div className="flex flex-col gap-10 md:flex-row justify-between">
@@ -26,9 +28,22 @@ const Footer = () => {
         <div>
           <h4 className="text-lg font-bold">Quick Links</h4>
           <ul className="space-y-2 mt-2">
-            <li className="text-gray-600 cursor-pointer">About</li>
-            <li className="text-gray-600 cursor-pointer">Contact</li>
-            <li className="text-gray-600 cursor-pointer">Privacy Policy</li>
+            <li>
+              <Link
+                to="/about"
+                className="text-gray-600 cursor-pointer hover:font-bold hover:underline"
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="text-gray-600 cursor-pointer hover:font-bold hover:underline">
+                Contact
+              </Link>
+            </li>
+            <Link className="text-gray-600 cursor-pointer hover:font-bold hover:underline">
+              Privacy Policy
+            </Link>
           </ul>
         </div>
         <div>
@@ -44,7 +59,7 @@ const Footer = () => {
       <div className="mt-10">
         <hr />
         <p className="text-center text-gray-700">
-          © 2025 GreenNest. All rights reserved.
+          © {year} GreenNest. All rights reserved.
         </p>
       </div>
     </div>

@@ -13,6 +13,7 @@ import UpdateTransaction from "../Pages/UpdateTransaction";
 import Loading from "../Components/Loading";
 import TransactionDetails from "../Pages/TransactionDetails";
 import About from "../Pages/About";
+import Contact from "../Pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
             <UpdateTransaction></UpdateTransaction>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/contact",
+        Component: Contact,
       },
       {
         path: "*",
