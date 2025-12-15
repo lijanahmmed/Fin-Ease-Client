@@ -2,10 +2,10 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="mt-15 w-11/12 md:w-10/12 mx-auto">
+    <div className="mt-20 w-11/12 md:w-10/12 mx-auto">
       <div className="text-center space-y-2">
         <h3 className="text-3xl font-bold">About Us</h3>
-        <p className="text-gray-500">
+        <p className="text-gray-400">
           Fin Ease is dedicated to empowering individuals to take control of their finances, make smarter decisions,
           and build a secure financial future.
         </p>
@@ -13,7 +13,7 @@ const About = () => {
 
       <div className="mt-10">
         <h5 className="text-xl font-bold mb-3">The Story of Fin Ease</h5>
-        <p className="text-gray-700 leading-relaxed">
+        <p className="text-gray-400 leading-relaxed">
           In today’s fast-paced world, managing finances can feel overwhelming. Many people struggle to track expenses,
           set budgets, and plan for the future effectively. Recognizing this challenge, a group of financial enthusiasts
           and tech innovators came together to create Fin Ease — a platform designed to simplify financial management

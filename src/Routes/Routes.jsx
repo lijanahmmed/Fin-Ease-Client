@@ -14,6 +14,7 @@ import Loading from "../Components/Loading";
 import TransactionDetails from "../Pages/TransactionDetails";
 import About from "../Pages/About";
 import Contact from "../Pages/Contact";
+import Privacy from "../Pages/Privacy";
 
 const router = createBrowserRouter([
   {
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         Component: Contact,
+      },
+      {
+        path: "/privacy-policy",
+        Component: Privacy,
       },
       {
         path: "*",

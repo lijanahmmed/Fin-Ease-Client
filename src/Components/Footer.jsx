@@ -41,7 +41,7 @@ const Footer = () => {
                 Contact
               </Link>
             </li>
-            <Link className="text-gray-600 cursor-pointer hover:font-bold hover:underline">
+            <Link to="/privacy-policy" className="text-gray-600 cursor-pointer hover:font-bold hover:underline">
               Privacy Policy
             </Link>
           </ul>
@@ -49,9 +49,9 @@ const Footer = () => {
         <div>
           <h4 className="text-lg font-bold">Social Media</h4>
           <div className="mt-2 flex gap-2">
-            <FaInstagram size={24} />
-            <FaFacebook size={24} />
-            <FaXTwitter size={24} />
+            <a href="https://www.instagram.com/"><FaInstagram size={24} /></a>
+            <a href="https://www.facebook.com/"><FaFacebook size={24} /></a>
+            <a href="https://x.com/"><FaXTwitter size={24} /></a>
           </div>
         </div>
       </div>

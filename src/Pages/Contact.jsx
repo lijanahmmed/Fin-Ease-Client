@@ -2,16 +2,16 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div className="mt-15 w-11/12 md:w-10/12 mx-auto">
+    <div className="mt-20 w-11/12 md:w-10/12 mx-auto">
       <div className="text-center space-y-2">
         <h3 className="text-3xl font-bold">Contact Us</h3>
-        <p className="text-gray-500">
+        <p className="text-gray-400">
           Our team is here to help you with any questions, feedback, or suggestions
           to improve your financial journey.
         </p>
       </div>
 
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mt-10 mx-auto">
+      <div className="card bg-base-100 w-full max-w-sm shrink-0 border border-purple-300 shadow-md shadow-purple-200 rounded-2xl mt-10 mx-auto">
         <div className="card-body">
           <fieldset className="space-y-4">
             <div>
